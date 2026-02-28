@@ -1,0 +1,226 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bebas+Neue&family=Caveat+Brush&family=Nova+Square&family=Unbounded:wght@200..900&display=swap');
+
+.nova-square-regular {
+  font-family: "Nova Square", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.lab-section {
+  background: radial-gradient(circle at center, #050a16 0%, #000 70%);
+  padding: 100px 60px;
+  color: white;
+  overflow: hidden;
+}
+
+/* HEADER */
+.lab-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.lab-header h2 {
+  font-size: 56px;
+  color: #9effb8;
+  font-family: "Nova Square", sans-serif;
+}
+
+.lab-header p {
+  opacity: 0.6;
+}
+
+/* LAYOUT */
+.lab-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+/* LEFT SIDE */
+.lab-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.upload-box {
+  border-radius: 25px;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+/* Animated gradient border */
+.upload-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  padding: 5px;
+  background: linear-gradient(90deg, #00ff88, #000000, #14f2a8);
+  background-size: 200% 200%;
+  animation: borderMove 4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.upload-content {
+  position: relative;
+  text-align: center;
+}
+
+.upload-icon svg {
+  width: 60px;
+  height: 60px;
+  stroke: #00ff88;
+  animation: floatIcon 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatIcon {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-8px); }
+}
+
+.lab-features {
+  margin: 30px 0;
+  display: flex;
+  /* gap: 50px; */
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  
+  
+}
+
+.lab-features span{
+    border:2px solid #00d084;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.scan-btn {
+  padding: 14px 40px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #00ff88, #00d084);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: center;   
+  margin-top: 10px;
+}
+
+.scan-btn:hover {
+  box-shadow: 0 0 10px #00ff88;
+  transform: translateY(-3px);
+}
+
+/* RIGHT SIDE */
+.lab-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hologram-container {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hologram-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,255,136,0.4) 0%, transparent 70%);
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+/* GRID OVERLAY */
+.grid-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.12) 1px, transparent 1px);
+  background-size: 25px 25px;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+@keyframes pulseGlow {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.hologram-leaf {
+  font-size: 120px;
+  color: #00ff88;
+  text-shadow: 0 0 20px #00ff88;
+  z-index: 2;
+}
+
+/* Vertical Scan Line */
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #00ff88;
+  box-shadow: 0 0 20px #00ff88;
+  z-index: 3;
+  animation: scanMove 3s linear infinite;
+}
+
+@keyframes scanMove {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+/* Floating Particles */
+.particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: floatParticle 6s infinite linear;
+  opacity: 0.5;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0); opacity: 0.2; }
+  100% { transform: translateY(-150px); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .lab-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media (max-width: 200px) {
+  .hologram-container {
+    max-height: 200px;
+  }
+  .grid-overlay{
+    max-width: 50%;
+    max-height: 50%;
+  }
+}
