@@ -1,4 +1,61 @@
-/* Loading Animation */
+.lang-toggle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.btn-feedback {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(156, 163, 175, 0.3);
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-professional);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.btn-feedback:hover {
+    border-color: var(--accent-main);
+    color: var(--accent-main);
+    background-color: var(--effect-glow);
+}
+
+.btn-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--accent-main);
+    /* was hardcoded #28a745 */
+    background-color: transparent;
+    color: var(--accent-main);
+    font-family: var(--font-professional);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.btn-lang:hover {
+    background-color: var(--effect-glow);
+}
+
+@media (max-width: 480px) {
+
+    .btn-feedback,
+    .btn-lang {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.75rem;
+    }
+}
+
 .loading-container {
     display: flex;
     flex-direction: column;
@@ -28,7 +85,6 @@
     }
 }
 
-/* Result Card Styling */
 .result-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;

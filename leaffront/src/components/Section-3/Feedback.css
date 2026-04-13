@@ -1,0 +1,322 @@
+/* ─── Container ───────────────────────────────────────────────────────────────
+   On PC: centered card with a sensible max-width so it doesn't stretch full screen
+   On mobile: full width with tighter padding                                    */
+
+.feedback-container {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+
+    /* PC improvement — cap width and center it */
+    max-width: 680px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+.feedback-container h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-professional);
+
+    /* PC improvement — slightly larger heading on desktop */
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.feedback-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+
+    /* PC improvement — a little breathing room */
+    line-height: 1.6;
+}
+
+/* ─── Accuracy buttons ────────────────────────────────────────────────────────
+   On PC: equal-width side by side with a min-height for easier clicking
+   On mobile: stack vertically                                                   */
+
+.accuracy-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    /* PC improvement — equal columns */
+    flex-wrap: wrap;
+}
+
+.btn-rate {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid rgba(156, 163, 175, 0.3);
+    background-color: transparent;
+    color: var(--text-primary);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-professional);
+
+    /* PC improvement — minimum size so buttons never feel tiny */
+    min-width: 140px;
+    min-height: 52px;
+}
+
+.btn-rate:hover {
+    background-color: rgba(156, 163, 175, 0.1);
+
+    /* PC improvement — subtle lift on hover */
+    transform: translateY(-1px);
+    box-shadow: var(--card-shadow);
+}
+
+.btn-rate:active {
+    transform: translateY(0);
+}
+
+.btn-rate.selected-yes {
+    border-color: var(--accent-main);
+    background-color: var(--effect-glow);
+    color: var(--accent-main);
+}
+
+.btn-rate.selected-no {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* ─── Feedback form ───────────────────────────────────────────────────────────
+   On PC: wider gap between sections for visual clarity                          */
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(156, 163, 175, 0.2);
+    padding-top: 1.5rem;
+
+    /* PC improvement — more generous spacing on large screens */
+    margin-top: 0.5rem;
+}
+
+.question-text {
+    font-weight: 600;
+    color: var(--text-primary);
+
+    /* PC improvement */
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+/* ─── Checkboxes ──────────────────────────────────────────────────────────────
+   On PC: 2-column grid so options don't stretch into one long column            */
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* mobile default: single column */
+    gap: 0.8rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+
+    /* PC improvement — hover highlight on entire row */
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+}
+
+.checkbox-label:hover {
+    background-color: rgba(156, 163, 175, 0.08);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-main);
+    cursor: pointer;
+
+    /* Prevent checkbox from shrinking inside flex */
+    flex-shrink: 0;
+}
+
+/* ─── Textarea ────────────────────────────────────────────────────────────────*/
+
+.textarea-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.textarea-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.textarea-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(156, 163, 175, 0.4);
+    background-color: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* PC improvement — comfortable default height */
+    min-height: 100px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+.textarea-group textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+.textarea-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-main);
+    box-shadow: var(--glow-shadow);
+}
+
+/* ─── Success state ───────────────────────────────────────────────────────────*/
+
+.success-state {
+    text-align: center;
+    padding: 3rem 2rem;
+
+    /* PC improvement — more vertical breathing room on desktop */
+    padding: clamp(2rem, 5vw, 4rem) 2rem;
+}
+
+.success-state h3 {
+    color: var(--accent-main);
+
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    margin-bottom: 0.75rem;
+}
+
+/* ─── Animation ───────────────────────────────────────────────────────────────*/
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Tablet (600px – 900px) ──────────────────────────────────────────────────*/
+
+@media (min-width: 600px) {
+    .feedback-container {
+        padding: 2.5rem;
+    }
+
+    /* Checkboxes go 2-column on tablet */
+    .checkbox-group {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* If only one or three checkboxes, last item spans full width */
+    .checkbox-label:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ─── Desktop (900px+) ────────────────────────────────────────────────────────*/
+
+@media (min-width: 900px) {
+    .feedback-container {
+        padding: 3rem;
+        /* Slightly larger card shadow depth on desktop */
+        box-shadow: var(--card-shadow), 0 8px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .accuracy-buttons {
+        gap: 1.25rem;
+    }
+
+    .btn-rate {
+        padding: 1rem 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .feedback-form {
+        gap: 2rem;
+    }
+
+    .textarea-group textarea {
+        min-height: 120px;
+    }
+}
+
+/* ─── Mobile (below 480px) ────────────────────────────────────────────────────*/
+
+@media (max-width: 480px) {
+    .feedback-container {
+        padding: 1.25rem;
+        margin-top: 1rem;
+        border-radius: calc(var(--border-radius) * 0.75);
+        /* slightly softer on small screens */
+    }
+
+    /* Stack accuracy buttons vertically on very small screens */
+    .accuracy-buttons {
+        flex-direction: column;
+    }
+
+    .btn-rate {
+        min-height: 48px;
+        /* touch-friendly tap target */
+        font-size: 0.95rem;
+    }
+
+    .feedback-form {
+        gap: 1.25rem;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+        /* single column on mobile */
+    }
+
+    .checkbox-label {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.5rem;
+    }
+
+    .textarea-group textarea {
+        font-size: 1rem;
+        /* prevent iOS auto-zoom on focus (must be ≥16px... or 1rem) */
+    }
+
+    .success-state {
+        padding: 2rem 1rem;
+    }
+}

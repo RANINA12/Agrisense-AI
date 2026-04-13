@@ -2,6 +2,13 @@ Apple_Apple_scab
 Apple_Black_rot
 Apple_Cedar_apple_rust
 Apple_healthy
+Cabbage_Alternaria_Leaf_Spot
+Cabbage_Bacteria_spot_rot
+Cabbage_Black_Rot
+Cabbage_Downy_Mildew
+Cabbage_Healthy
+Cabbage_Ring_Spot
+Cabbage___Cabbage_aphid_colony
 Corn_Cercospora_leaf_spot
 Corn_Common_rust
 Corn_Northern_Leaf_Blight
@@ -13,6 +20,10 @@ Grape_healthy
 Potato_Early_blight
 Potato_Late_blight
 Potato_healthy
+Rice_Brown_Spot
+Rice_Healthy
+Rice_Hispa
+Rice_Leaf_Blast
 Sugarcane_Healthy
 Sugarcane_Mosaic
 Sugarcane_RedRot
@@ -35,3 +46,10 @@ Tomato_Target_spot
 Tomato_Yellow_Leaf_curl_Virus
 Tomato_healthy
 Tomato_mosaic_virus
+Wheat_black_rust
+Wheat_brown_rust
+Wheat_leaf_blight
+wheat_healthy
+wheat_mildew
+wheat_mite
+wheat_septoria

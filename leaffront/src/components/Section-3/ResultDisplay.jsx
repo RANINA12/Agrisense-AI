@@ -1,73 +1,135 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ResultDisplay.css";
-
-function ResultDisplay({ result }) {
-    // If the AI rejected the images or found a mix
-    if (!result.success) {
+import { useToast } from "../../utils/ToastContext";
+function ResultDisplay({ result, scan_id, user }) {
+    const navigate = useNavigate();
+    const [lang, setLang] = useState("en");
+    const { showToast } = useToast();
+    if (!result?.success) {
         return (
-            <div className="result-card error-card">
-                <h3>Analysis Failed</h3>
-                <p>{result.error}</p>
-                <button className="retry-btn" onClick={() => window.location.reload()}>
-                    Try Again
+            <div className="result-card error-card animate-fade-in">
+                <h3>{lang === "en" ? "Analysis Failed" : "विश्लेषण विफल रहा"}</h3>
+                <p>{result?.error}</p>
+                <button className="btn-danger" onClick={() => window.location.reload()}>
+                    {lang === "en" ? "Try Again" : "पुनः प्रयास करें"}
                 </button>
             </div>
         );
     }
-
-    const { ai_greeting, prescription } = result;
+    const { prescription, ai_prediction, ai_greeting } = result;
+    const confidence = ai_prediction?.confidence ?? "N/A";
+    const greetingText = ai_greeting || (
+        lang === "en"
+            ? `Based on my analysis, your ${prescription.crop_en} is diagnosed with ${prescription.disease_en} with ${confidence}% confidence. Here are my suggestions for you:`
+            : `मेरे विश्लेषण के आधार पर, आपके ${prescription.crop_hi} में ${confidence}% संभावना के साथ ${prescription.disease_hi} की पहचान की गई है। यहाँ आपके लिए मेरे सुझाव हैं:`
+    )
+    const getText = (key) => prescription?.[`${key}_${lang}`];
+    const getTreatment = (key) => prescription?.treatment?.[`${key}_${lang}`] ?? null;
+    const handleFeedback = () => {
+        if (!scan_id) {
+            showToast("Scan Id not found . Please try scanning again ", "error");
+            return;
+        }
+        navigate(`/AgriSenseAI/scans/${scan_id}/feedback`, {
+            state: { scan_id, user }
+        });
+    };
 
     return (
-        <div className="result-card success-card">
-            <div className="ai-greeting">
-                <span className="ai-icon">🤖</span>
-                <p>{ai_greeting}</p>
+        <div className="result-card success-card animate-fade-in">
+            <div className="lang-toggle-container">
+                <button className="btn-feedback" onClick={handleFeedback}>
+                    📋 Feedback
+                </button>
+                <button className="btn-lang" onClick={() => setLang(lang === "en" ? "hi" : "en")}>
+                    {lang === "en" ? "🇮🇳 हिंदी" : "🇬🇧 English"}
+                </button>
             </div>
 
+            <div className="ai-greeting">
+                <span className="ai-icon">🤖</span>
+                <p>{greetingText}</p>
+            </div>
             {prescription && (
                 <div className="prescription-content">
+
                     <div className="data-row">
-                        <span className="label">Crop:</span>
-                        <span className="value">{prescription.crop}</span>
+                        <span className="label">{lang === "en" ? "Crop:" : "फसल:"}</span>
+                        <span className="value">{getText("crop")}</span>
                     </div>
 
                     <div className="data-row">
-                        <span className="label">Disease:</span>
-                        <span className="value highlight">{prescription.disease}</span>
+                        <span className="label">{lang === "en" ? "Disease:" : "बीमारी:"}</span>
+                        <span className="value highlight">{getText("disease")}</span>
                     </div>
 
-                    {prescription.possible_reason && (
-                        <div className="data-section">
-                            <h4>Possible Reason</h4>
-                            <p>{prescription.possible_reason}</p>
+                    {prescription.scientific_name && (
+                        <div className="data-row">
+                            <span className="label">{lang === "en" ? "Scientific Name:" : "वैज्ञानिक नाम:"}</span>
+                            <span className="value" style={{ fontStyle: "italic" }}>{prescription.scientific_name}</span>
                         </div>
                     )}
 
-                    {prescription.precaution_method && (
-                        <div className="data-section">
-                            <h4>Precautions</h4>
-                            <p>{prescription.precaution_method}</p>
+                    {getText("type") && (
+                        <div className="data-row">
+                            <span className="label">{lang === "en" ? "Type:" : "प्रकार:"}</span>
+                            <span className="value">{getText("type")}</span>
                         </div>
                     )}
 
-                    {/* This will safely hide if treatment was deleted by your backend logic */}
+                    {getText("severity") && (
+                        <div className="data-row">
+                            <span className="label">{lang === "en" ? "Severity:" : "गंभीरता:"}</span>
+                            <span className="value" style={{ fontWeight: "bold", color: "#d9534f" }}>
+                                {getText("severity")}
+                            </span>
+                        </div>
+                    )}
+
+                    {getText("symptoms") && (
+                        <div className="data-section">
+                            <h4>🔍 {lang === "en" ? "Symptoms" : "लक्षण"}</h4>
+                            <p>{getText("symptoms")}</p>
+                        </div>
+                    )}
+
+                    {getText("possible_reason") && (
+                        <div className="data-section">
+                            <h4>⚠️ {lang === "en" ? "Possible Reason" : "संभावित कारण"}</h4>
+                            <p>{getText("possible_reason")}</p>
+                        </div>
+                    )}
+
+                    {getText("precaution_method") && (
+                        <div className="data-section">
+                            <h4>🛡️ {lang === "en" ? "Precautions" : "सावधानियां"}</h4>
+                            <p>{getText("precaution_method")}</p>
+                        </div>
+                    )}
+
                     {prescription.treatment && (
                         <div className="treatment-box">
-                            <h4>💊 Recommended Treatment</h4>
-                            <p><strong>Pesticide:</strong> {prescription.treatment.pesticide}</p>
-                            {prescription.treatment.dosage_per_acre && (
-                                <p><strong>Dosage:</strong> {prescription.treatment.dosage_per_acre} per acre</p>
+                            <h4>💊 {lang === "en" ? "Recommended Treatment" : "अनुशंसित उपचार"}</h4>
+
+                            {getTreatment("pesticide") && (
+                                <p><strong>{lang === "en" ? "Pesticide:" : "कीटनाशक:"}</strong> {getTreatment("pesticide")}</p>
                             )}
-                            {prescription.treatment.water_required && (
-                                <p><strong>Water:</strong> {prescription.treatment.water_required}</p>
+
+                            {getTreatment("dosage_per_acre") && (
+                                <p><strong>{lang === "en" ? "Dosage:" : "खुराक:"}</strong> {getTreatment("dosage_per_acre")}</p>
+                            )}
+
+                            {getTreatment("water_required") && (
+                                <p><strong>{lang === "en" ? "Water:" : "पानी:"}</strong> {getTreatment("water_required")}</p>
                             )}
                         </div>
                     )}
 
-                    {prescription.other_suggestion && (
+                    {getText("other_suggestion") && (
                         <div className="data-section">
-                            <h4>Additional Suggestions</h4>
-                            <p>{prescription.other_suggestion}</p>
+                            <h4>💡 {lang === "en" ? "Additional Suggestions" : "अन्य सुझाव"}</h4>
+                            <p>{getText("other_suggestion")}</p>
                         </div>
                     )}
                 </div>

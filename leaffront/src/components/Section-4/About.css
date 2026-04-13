@@ -1,0 +1,140 @@
+.about-page {
+    padding: 80px 0;
+}
+
+.about-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.about-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-professional);
+    color: var(--text-primary);
+}
+
+
+.about-header .highlight {
+    background: linear-gradient(90deg, var(--accent-main) 0%, var(--accent-hover) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.about-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-main);
+    font-family: var(--font-professional);
+}
+
+.about-text p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.stat-box {
+    background-color: var(--surface-color);
+    /* Automatically white or deep green */
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid rgba(156, 163, 175, 0.2);
+    box-shadow: var(--card-shadow);
+    transition: all var(--transition-speed) ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-hover);
+    box-shadow: var(--glow-shadow);
+    /* Global green glow! */
+}
+
+.stat-box h3 {
+    font-size: 2.5rem;
+    color: var(--accent-main);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-professional);
+}
+
+.stat-box span {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+
+.about-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    object-fit: cover;
+    border: 2px solid var(--accent-main);
+    /* Ties the image into the theme nicely */
+}
+
+
+@media (max-width: 992px) {
+    .about-container {
+        gap: 40px;
+    }
+
+    .about-header h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+
+    }
+
+    .about-text {
+        text-align: center;
+
+    }
+
+    .about-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+
+    }
+}

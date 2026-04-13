@@ -1,38 +1,48 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ResultDisplay from "./ResultDisplay";
 import "./ResultPage.css";
-
 function ResultPage() {
-
     const location = useLocation();
-    const { result, images } = location.state || {};
-
+    const navigate = useNavigate();
+    const { result, images, scan_id, user } = location.state || {};
     if (!result) {
-        return <h2>No result found</h2>;
+        return (
+            <div className="result-page error-state">
+                <h2>No result found</h2>
+                <button className="btn-primary" onClick={() => navigate("/")}>
+                    Go Back to Lab
+                </button>
+            </div>
+        );
     }
-
     return (
         <div className="result-page">
+            <div className="container">
 
-            <h2>Detection Result</h2>
+                <div className="result-header">
+                    <button className="btn-primary" onClick={() => navigate("/")}>
+                        Go Back to Lab
+                    </button>
+                    <h2>Detection Result</h2>
+                </div>
+                <div className="result-images">
+                    {images?.map((img, index) => (
+                        <img
+                            key={index}
+                            src={URL.createObjectURL(img)}
+                            alt={`Scanned leaf ${index + 1}`}
+                            className="result-img"
+                        />
+                    ))}
+                </div>
+                <ResultDisplay
+                    result={result}
+                    scan_id={scan_id}
+                    user={user}
+                />
 
-            {/* Uploaded Images */}
-            <div className="result-images">
-                {images.map((img, index) => (
-                    <img
-                        key={index}
-                        src={URL.createObjectURL(img)}
-                        alt="leaf"
-                        className="result-img"
-                    />
-                ))}
             </div>
-
-            {/* AI Result */}
-            <ResultDisplay result={result} />
-
         </div>
     );
 }
-
 export default ResultPage;

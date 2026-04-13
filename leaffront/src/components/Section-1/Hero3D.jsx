@@ -1,45 +1,26 @@
-
-
+import React, { useState } from "react";
+import Spline from "@splinetool/react-spline";
+import "./Hero3D.css";
 function Hero3D() {
-  return (
-<<<<<<< HEAD
-    <div className="spline-container">
-      {/* <Spline  scene="https://prod.spline.design/2d1NRljwo2hx0jlF/scene.splinecode" 
-      /> */}
-      <Spline
-        scene="https://prod.spline.design/2d1NRljwo2hx0jlF/scene.splinecode"
-        //  scene="https://prod.spline.design/phvgO5TUzxVLnUYe/scene.splinecode" 
+    const [isLoading, setIsLoading] = useState(true);
+    return (
+        <div className="spline-container">
+            {isLoading && (
+                <div className="spline-loader">
+                    <div className="spinner"></div>
+                    <p>Loading 3D Experience...</p>
+                </div>
+            )}
+            <Spline
+                scene="https://prod.spline.design/2d1NRljwo2hx0jlF/scene.splinecode"
+                onLoad={() => {
+                    console.log("Spline loaded successfully!");
+                    setIsLoading(false);
+                }}
+            />
 
-        onLoad={(spline) => console.log("Spline loaded")}
-      />
-
-    </div>
-=======
-
-    <div className="hero-right">
-
-  <div className="leaf-card">
-
-    <img 
-      src="imgbg.png"
-      alt="Tomato Leaf"
-      className="leaf-image"
-    />
-
-    <div className="leaf-info">
-      <h3>Tomato Leaf</h3>
-      <p>Disease: Early Blight</p>
-      <p className="confidence">Confidence: 96%</p>
-    </div>
-
-  </div>
-
-</div>
-    
-      
-   
->>>>>>> 0c31db3 (Updated hero section)
-  );
+        </div>
+    );
 }
 
 export default Hero3D;
