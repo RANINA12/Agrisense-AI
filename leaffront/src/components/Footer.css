@@ -1,0 +1,148 @@
+/* ================== FOOTER BASE ================== */
+.footer {
+    background-color: var(--surface-color);
+    /* Dynamically white or deep green */
+    border-top: 1px solid rgba(156, 163, 175, 0.2);
+    padding-top: 60px;
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+/* ================== BRAND SECTION ================== */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logo-icon {
+    font-size: 1.8rem;
+}
+
+.footer-logo h2 {
+    font-family: var(--font-professional);
+    font-size: 1.8rem;
+    color: var(--accent-main);
+    letter-spacing: -0.02em;
+}
+
+.footer-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1rem;
+    max-width: 400px;
+}
+
+/* ================== LINKS SECTIONS ================== */
+.footer-heading {
+    font-family: var(--font-professional);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--accent-main);
+    padding-left: 5px;
+    /* Nice little slide effect on hover */
+}
+
+/* ================== BOTTOM BAR (COPYRIGHT & SOCIALS) ================== */
+.footer-bottom {
+    background-color: var(--bg-color);
+    /* Slight inset look using main body bg */
+    border-top: 1px solid rgba(156, 163, 175, 0.2);
+    padding: 20px 0;
+}
+
+.footer-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.social-links a:hover {
+    color: var(--accent-main);
+    border-color: var(--accent-main);
+    transform: translateY(-3px);
+    box-shadow: var(--glow-shadow);
+    /* Global green AI glow! */
+}
+
+/* ================== RESPONSIVE DESIGN ================== */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        /* Brand spans full width, links side-by-side */
+    }
+
+    .brand-section {
+        grid-column: 1 / -1;
+    }
+
+    .footer-description {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        /* Stacks everything */
+        gap: 30px;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

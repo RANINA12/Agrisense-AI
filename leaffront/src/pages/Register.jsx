@@ -1,11 +1,15 @@
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { registerUser } from "../api/auth";
-
+import { useAuth } from "../utils/auth";
+import data from "../Data/District";
+import { useToast } from "../utils/ToastContext"
 const Register = () => {
   const navigate = useNavigate();
-
+  const { showToast } = useToast();
+  const { register, isLoading, error } = useAuth();
+  const [state, setState] = useState("");
+  const [districts, setDistricts] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,27 +18,59 @@ const Register = () => {
     state: "",
     district: "",
     city: "",
+    agreeToTerms: false,
   });
 
-  const handleChange = (e) => {
+  const handleStateChange = (e) => {
+    const selectedState = e.target.value;
+    setState(selectedState);
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      state: selectedState,
+      district: "",
     });
-  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await registerUser(formData);
-      alert(res.data.message);
-      navigate("/login");
-    } catch (error) {
-      alert(error.response?.data?.message || "Registration Failed");
+    if (selectedState === "") {
+      setDistricts([]);
+      setError("Please select a state");
+    } else {
+      setDistricts(data[selectedState] || []);
+      setError("");
     }
   };
 
+  const handleDistrictChange = (e) => {
+    setFormData({
+      ...formData,
+      district: e.target.value,
+    });
+  };
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+  const handleSubmit = async (e) => {
+    console.log(formData);
+    e.preventDefault();
+    if (!formData.agreeToTerms) {
+      alert("Please agree to the Terms of Service and Privacy Policy");
+      return;
+    }
+    const { success } = await register(formData);
+    if (success) {
+      navigate("/AgriSenseAI/login")
+      showToast("Register Successfully", "success");
+    }
+    else {
+      showToast(error, "error");
+    }
+  };
   return (
     <div className="register-container">
       <div className="register-box">
@@ -45,17 +81,50 @@ const Register = () => {
           <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
           <input type="tel" name="phone" placeholder="Phone Number" required onChange={handleChange} />
           <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
-          <input type="text" name="state" placeholder="State" required onChange={handleChange} />
-          <input type="text" name="district" placeholder="District" required onChange={handleChange} />
+          <select value={state} onChange={handleStateChange} required>
+            <option value="">Select State</option>
+            {Object.keys(data).map((st, index) => (
+              <option key={index} value={st}>
+                {st}
+              </option>
+            ))}
+          </select>
+          {error && (<p>{error}</p>)}
+          <select value={formData.district} onChange={handleDistrictChange} disabled={!state} required>
+            <option value="">Select District</option>
+            {districts.map((dist, index) => (
+              <option key={index} value={dist}>
+                {dist}
+              </option>
+            ))}
+          </select>
           <input type="text" name="city" placeholder="City" required onChange={handleChange} />
+          <div className="privacy-box">
+            <input
+              type="checkbox"
+              name="agreeToTerms"
+              id="agreeToTerms"
+              onChange={handleChange}
+            />
+            <label htmlFor="agreeToTerms">
+              I agree to the{" "}
+              <Link to="/AgriSenseAI/terms-of-service" target="_blank">
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link to="/AgriSenseAI/privacy-policy" target="_blank">
+                Privacy Policy
+              </Link>
+            </label>
+          </div>
 
-          <button type="submit" className="register-btn">
-            Create
+          <button type="submit" className="register-btn" disabled={isLoading}>
+            {isLoading ? "Creating" : "create"}
           </button>
         </form>
 
         <p className="login-text">
-          Already have account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/AgriSenseAI/login">Login</Link>
         </p>
       </div>
     </div>
@@ -63,42 +132,3 @@ const Register = () => {
 };
 
 export default Register;
-
-
-// import "./register.css";
-
-// import { Link } from "react-router-dom";
-
-// const Register = () => {
-//   return (
-//     <div className="register-container">
-      
-//       <div className="register-box">
-//         <h2 className="register-title">Sign In</h2>
-
-//         <form className="register-form">
-//           <input type="text" placeholder="Name" required />
-//           <input type="email" placeholder="Email" required />
-//           <input type="tel" placeholder="Phone Number" required />
-//           <input type="password" placeholder="Password" required />
-
-//           <input type="text" placeholder="State" required />
-//           <input type="text" placeholder="District" required />
-//           <input type="text" placeholder="City" required />
-
-//           <button type="submit" className="register-btn">
-//             Create
-//           </button>
-//         </form>
-
-//         <p className="login-text">
-//           Already have account? <Link to="/login">Login</Link>
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Register;
-
-
