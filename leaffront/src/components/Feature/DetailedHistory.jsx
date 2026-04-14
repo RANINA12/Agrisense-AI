@@ -84,10 +84,13 @@ function DetailedHistory() {
         <div className="result-page">
             <div className="container">
                 <div className="result-header">
-                    <button className="btn-primary" onClick={() => navigate(`/AgrisenseAI/getAllScan`)}>
-                        Back to History
+                    <button
+                        className="btn-primary btn-circle"
+                        onClick={() => navigate(`/AgrisenseAI/getAllScan`)}
+                    >
+                        &lt;
                     </button>
-                    <h2>Scan Detail</h2>
+                    <h2><center>Scan Detail</center></h2>
                 </div>
                 <div className="result-images">
                     <img

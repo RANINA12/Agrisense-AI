@@ -1,18 +1,28 @@
 import React from "react";
 import "./services.css";
+import Apple from "../../assets/images/Apple.jpg"
+import Cabbage from "../../assets/images/cabbage.png"
+import Corn from "../../assets/images/Corn.jpg"
+import Grapes from "../../assets/images/Grapes.jpg"
+import Potato from "../../assets/images/potato.jpg"
+import Rice from "../../assets/images/Rice.jpg"
+import Sugarcane from "../../assets/images/SugarCane.jpg"
+import Tea from "../../assets/images/Tea.jpg"
+import Tomato from "../../assets/images/Tomato.jpg"
+import Wheat from "../../assets/images/Wheat.jpg"
 
 const Services = () => {
     const crops = [
-        { name: "Apple", icon: "🍎", image: "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&q=80&w=400" },
-        { name: "Cabbage", icon: "🥬", image: "https://images.unsplash.com/photo-1599813295822-4a004eb6a58f?auto=format&fit=crop&q=80&w=400" },
-        { name: "Corn", icon: "🌽", image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&q=80&w=400" },
-        { name: "Grapes", icon: "🍇", image: "https://images.unsplash.com/photo-1596189181426-7f5fbba3b2a3?auto=format&fit=crop&q=80&w=400" },
-        { name: "Potato", icon: "🥔", image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&q=80&w=400" },
-        { name: "Rice", icon: "🌾", image: "https://images.unsplash.com/photo-1536625737227-92a1fc042e7e?auto=format&fit=crop&q=80&w=400" },
-        { name: "Sugarcane", icon: "🎋", image: "https://images.unsplash.com/photo-1626241776510-7521abf83d9f?auto=format&fit=crop&q=80&w=400" },
-        { name: "Tea", icon: "🍃", image: "https://images.unsplash.com/photo-1582791650394-bb9e03d36b8e?auto=format&fit=crop&q=80&w=400" },
-        { name: "Tomato", icon: "🍅", image: "https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&q=80&w=400" },
-        { name: "Wheat", icon: "🌾", image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&q=80&w=400" }
+        { name: "Apple", icon: "🍎", image: Apple },
+        { name: "Cabbage", icon: "🥬", image: Cabbage },
+        { name: "Corn", icon: "🌽", image: Corn },
+        { name: "Grapes", icon: "🍇", image: Grapes },
+        { name: "Potato", icon: "🥔", image: Potato },
+        { name: "Rice", icon: "🌾", image: Rice },
+        { name: "Sugarcane", icon: "🎋", image: Sugarcane },
+        { name: "Tea", icon: "🍃", image: Tea },
+        { name: "Tomato", icon: "🍅", image: Tomato },
+        { name: "Wheat", icon: "🌾", image: Wheat }
     ];
 
     return (
@@ -25,7 +35,9 @@ const Services = () => {
                 <div className="crops-grid">
                     {crops.map((crop, index) => (
                         <div className="crop-card" key={index}>
+
                             <div className="crop-image" style={{ backgroundImage: `url(${crop.image})` }}></div>
+                            {/* <div className="crop-image"><img src={crop.image} /></div> */}
                             <div className="crop-info">
                                 <h3>{crop.icon} {crop.name}</h3>
                                 <p>Instant detection of leaf blights, rots, and pests.</p>

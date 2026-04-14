@@ -1,5 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
+const validator = require("validator");
+
+console.log(validator.isEmail("test@gmail.com")); // true
 
 exports.logout = (req, res) => {
   res
@@ -16,6 +19,10 @@ exports.logout = (req, res) => {
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, phone, password, state, district, city, agreeToTerms } = req.body;
+
+    if (!validator.isEmail("test@gmail.com")) {
+      return res.status(409).json({ success: false, message: "Email is not Valid." });
+    }
 
     const exists = await User.findOne({ email });
     if (exists) {

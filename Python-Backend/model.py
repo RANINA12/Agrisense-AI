@@ -37,9 +37,6 @@ val_generator = val_datagen.flow_from_directory(
 NUM_CLASSES = train_generator.num_classes
 print("Detected classes:", NUM_CLASSES)
 
-# ===============================
-# CLASS WEIGHTS (HANDLE IMBALANCE)
-# ===============================
 true_labels = train_generator.classes
 class_weights_array = compute_class_weight(
     class_weight='balanced',
@@ -49,9 +46,6 @@ class_weights_array = compute_class_weight(
 class_weights = dict(enumerate(class_weights_array))
 print("Class weights calculated.")
 
-# ===============================
-# BUILD, LOAD, OR UPGRADE MODEL
-# ===============================
 if os.path.exists(MODEL_FILE):
     print(f"\n[INFO] Found existing model: {MODEL_FILE}")
     old_model = load_model(MODEL_FILE)
@@ -106,15 +100,8 @@ else:
 
 model.summary()
 
-# ===============================
-# CALLBACKS
-# ===============================
 early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 checkpoint = ModelCheckpoint(MODEL_FILE, monitor='val_accuracy', save_best_only=True)
-
-# ===============================
-# INITIAL TRAINING PHASE
-# ===============================
 print("Starting/Resuming Phase 1 Training...")
 history = model.fit(
     train_generator,
@@ -124,9 +111,6 @@ history = model.fit(
     callbacks=[early_stop, checkpoint]
 )
 
-# ===============================
-# FINE TUNING (UNFREEZE TOP LAYERS)
-# ===============================
 print("Starting/Resuming Phase 2 Fine Tuning...")
 
 # Dynamically find the MobileNetV2 layer inside the model so we can unfreeze it
@@ -155,10 +139,6 @@ history_finetune = model.fit(
     class_weight=class_weights,
     callbacks=[early_stop, checkpoint]
 )
-
-# ===============================
-# SAVE CLASS NAMES
-# ===============================
 class_names = list(train_generator.class_indices.keys())
 
 with open("class_names.txt", "w") as f:

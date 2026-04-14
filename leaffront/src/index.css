@@ -17,7 +17,7 @@
   --accent-main: #4ade80;
   /* Lite Parrot Green */
   --accent-hover: #22c55e;
-  --effect-glow: rgba(74, 222, 128, 0.4);
+  --effect-glow: rgba(74, 222, 128, 0.6);
   /* Green glow effect */
 
   --scrollbar-track: #e5e7eb;
@@ -42,7 +42,7 @@
   --accent-main: #059669;
   /* Darker Green accent */
   --accent-hover: #10b981;
-  --effect-glow: rgba(16, 185, 129, 0.3);
+  --effect-glow: rgba(16, 185, 129, 0.5);
 
   --scrollbar-track: #0f172a;
   --scrollbar-thumb: #059669;

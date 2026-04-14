@@ -32,7 +32,7 @@ const Help = () => {
                         <div className="contact-methods">
                             <div className="method">
                                 <strong>📧 Email Us</strong>
-                                <span>support@agrisenseai.com</span>
+                                <span>nikunjbisani@gmail.com</span>
                             </div>
                             <div className="method">
                                 <strong>📞 Call us </strong>

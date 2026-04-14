@@ -1,6 +1,5 @@
 .navbar {
   background-color: var(--surface-color);
-  /* Dynamically adapts to Light/Dark */
   box-shadow: var(--card-shadow);
   border-bottom: 1px solid rgba(156, 163, 175, 0.2);
   position: sticky;
@@ -16,7 +15,6 @@
   align-items: center;
 }
 
-/* ================== BRANDING / LOGO ================== */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -38,7 +36,6 @@
   letter-spacing: -0.02em;
 }
 
-/* ================== NAVIGATION LAYOUT ================== */
 .nav-links-wrapper {
   display: flex;
   align-items: center;
@@ -50,7 +47,6 @@
   gap: 25px;
 }
 
-/* ================== STANDARD LINKS ================== */
 .nav-link {
   font-family: var(--font-professional);
   color: var(--text-secondary);
@@ -65,7 +61,6 @@
   color: var(--accent-main);
 }
 
-/* Animated bottom border for hover effect */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -90,7 +85,6 @@
   display: inline-block;
 }
 
-/* Trigger looks exactly like other nav-links */
 .nav-dropdown-trigger {
   display: flex;
   align-items: center;
@@ -109,12 +103,9 @@
   transform: rotate(180deg);
 }
 
-/* ─── Dropdown menu ───────────────────────────────────────────────────────────*/
-/* ─── Remove the gap ──────────────────────────────────────────────────────────*/
 .nav-dropdown-menu {
   position: absolute;
   top: 100%;
-  /* was calc(100% + 8px) — this was the gap causing it */
   left: 50%;
   transform: translateX(-50%);
   min-width: 180px;
@@ -125,15 +116,10 @@
   overflow: hidden;
   z-index: 999;
   animation: fadeIn 0.15s ease forwards;
-
-  /* Bridge: invisible padding fills the space between trigger and menu
-       so the mouse never leaves the hover zone while moving down          */
   padding-top: 8px;
   margin-top: -8px;
-  /* visually shifts menu back to where it was */
 }
 
-/* ─── Dropdown items ──────────────────────────────────────────────────────────*/
 .nav-dropdown-item {
   display: flex;
   align-items: center;
@@ -151,12 +137,10 @@
   color: var(--accent-main);
 }
 
-/* Divider between items */
 .nav-dropdown-item:not(:last-child) {
   border-bottom: 1px solid rgba(156, 163, 175, 0.15);
 }
 
-/* ================== ACTIONS (THEME & BUTTONS) ================== */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -187,7 +171,6 @@
   transform: scale(1.05);
 }
 
-/* Sizing tweaks for the global primary buttons in the navbar */
 .auth-btn,
 .logout-btn {
   padding: 10px 22px;
@@ -195,6 +178,199 @@
   text-decoration: none;
 }
 
+.mobile-nav-right {
+  display: none;
+  /* hidden on desktop */
+  align-items: center;
+  gap: 10px;
+}
+
+.hamburger {
+  background: transparent;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.hamburger:hover {
+  border-color: var(--accent-main);
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: block;
+}
+
+.mobile-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: var(--surface-color);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.drawer-close {
+  background: transparent;
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  border-radius: 6px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.drawer-close:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0;
+  flex: 1;
+}
+
+.drawer-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.25rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: var(--font-professional);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  border-bottom: 1px solid rgba(156, 163, 175, 0.08);
+}
+
+.drawer-link:hover {
+  background-color: var(--effect-glow);
+  color: var(--accent-main);
+}
+
+.drawer-accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-accordion-trigger {
+  font-weight: 600;
+}
+
+.drawer-accordion-body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(156, 163, 175, 0.05);
+  border-bottom: 1px solid rgba(156, 163, 175, 0.08);
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.drawer-sub-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.25rem 0.75rem 2rem;
+  /* extra left indent */
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  border-bottom: 1px solid rgba(156, 163, 175, 0.06);
+}
+
+.drawer-sub-link:hover {
+  background-color: var(--effect-glow);
+  color: var(--accent-main);
+}
+
+.drawer-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1.25rem;
+  border-top: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.drawer-auth-btn {
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  font-size: 1rem;
+  text-decoration: none;
+}
 
 @media (max-width: 1024px) {
   .nav-links {
@@ -207,47 +383,41 @@
   }
 }
 
-
 @media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 15px;
+  .desktop-nav {
+    display: none;
   }
 
-  .nav-links-wrapper {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
+  .mobile-nav-right {
+    display: flex;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
+  .mobile-overlay {
+    display: block;
   }
 
-  .nav-actions {
-    border-left: none;
-    padding-left: 0;
-    margin-left: 0;
-    width: 100%;
-    justify-content: center;
-    border-top: 1px solid rgba(156, 163, 175, 0.2);
-    padding-top: 15px;
+  .mobile-drawer {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+
+  .mobile-overlay,
+  .mobile-drawer {
+    display: none !important;
+    /* completely off on desktop */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
   }
 
-  .nav-dropdown-item {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
-  }
-
-  .nav-dropdown-menu {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
-    padding-left: 1rem;
-    animation: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

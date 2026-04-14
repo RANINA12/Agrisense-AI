@@ -57,7 +57,7 @@ exports.detectDisease = async (req, res) => {
         let pythonResponse;
         try {
             pythonResponse = await axios.post(
-                "http://127.0.0.1:8000/predict",
+                `${process.env.PYTHON_BACKEND_URL}/predict`,
                 form,
                 { headers: form.getHeaders(), timeout: 30_000 }
             );

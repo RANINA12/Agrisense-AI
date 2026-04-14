@@ -21,10 +21,12 @@ export const ToastProvider = ({ children }) => {
         <ToastContext.Provider value={{ showToast }}>
             {children}
             {toastState.visible && (
-                <Toast
-                    message={toastState.message}
-                    type={toastState.type}
-                />
+                <div className="toast-container">
+                    <Toast
+                        message={toastState.message}
+                        type={toastState.type}
+                    />
+                </div>
             )}
         </ToastContext.Provider>
     );

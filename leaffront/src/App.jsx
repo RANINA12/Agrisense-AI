@@ -15,7 +15,8 @@ import FeedBackHistory from "./components/Feature/FeedbackHistory"
 import DetailedHistory from "./components/Feature/DetailedHistory"
 import History from "./components/Feature/History";
 
-const Dashboard = lazy(() => import("./pages/Dashboard"));
+// const Dashboard = lazy(() => import("./pages/Dashboard"));
+
 function App() {
   return (
     <BrowserRouter>
@@ -36,7 +37,6 @@ function App() {
         <Routes>
 
           <Route path="/" element={<Layout />}>
-            <Route index element={<Dashboard />} />
           </Route>
 
           <Route path="/AgriSenseAI/register" element={<Register />} />

@@ -122,7 +122,7 @@ function History() {
                                     <button
                                         className="btn-primary"
                                         onClick={() =>
-                                            navigate(`AgriSenseAI/scans/${scan_id}`, {
+                                            navigate(`/AgriSenseAI/scan/${scan._id}`, {
                                                 state: { scan_id: scan._id },
                                             })
                                         }
@@ -132,7 +132,7 @@ function History() {
                                     <button
                                         className="btn-secondary"
                                         onClick={() =>
-                                            navigate(`AgriSenseAI/scans/${scan_id}/feedback `, {
+                                            navigate(`/AgriSenseAI/scans/${scan._id}/feedback `, {
                                                 state: { scan_id: scan._id, user },
                                             })
                                         }

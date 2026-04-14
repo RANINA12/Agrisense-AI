@@ -7,7 +7,6 @@
     flex-direction: column;
     gap: 0.75rem;
     pointer-events: none;
-    /* doesn't block clicks behind it */
     max-width: 360px;
     width: calc(100% - 2.5rem);
 }
@@ -35,23 +34,22 @@
 
 .toast--error {
     border-left-color: #ef4444;
-    background-color: rgba(239, 68, 68, 0.08);
+    background-color: rgba(239, 68, 68, 0.9);
 }
 
 .toast--warning {
     border-left-color: #f59e0b;
-    background-color: rgba(245, 158, 11, 0.08);
+    background-color: rgba(245, 158, 11, 0.9);
 }
 
 .toast--info {
     border-left-color: #3b82f6;
-    background-color: rgba(59, 130, 246, 0.08);
+    background-color: rgba(59, 130, 246, 0.9);
 }
 
 .toast-icon {
     font-size: 1.1rem;
     flex-shrink: 0;
-    /* never shrinks even on narrow screens */
     line-height: 1;
 }
 
