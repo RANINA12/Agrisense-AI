@@ -1,6 +1,7 @@
 import { useAuth } from "../../utils/auth";
 import axios from "axios";
-import "./FeedbackHistory.css";
+import "./FeedbackModal.css";
+import { useState } from "react";
 import { useToast } from "../../utils/ToastContext";
 function FeedBackModal({ feedback, scan_id, onSuccess, onClose }) {
     const { token } = useAuth();
@@ -37,6 +38,7 @@ function FeedBackModal({ feedback, scan_id, onSuccess, onClose }) {
                 }
             );
             onSuccess(response.data.data);
+            showToast("Feedback updated successfully", "success")
         } catch (err) {
             setError(err.response?.data?.message || "Failed to update feedback.");
             showToast(err.response?.data?.message || "Failed to update feedback.", "error")

@@ -43,8 +43,6 @@ export default function PrivacyPolicy() {
         });
         return () => observer.disconnect();
     }, []);
-
-    // Helper function for smooth scrolling
     const handleScroll = (e, id) => {
         e.preventDefault();
         const element = document.getElementById(id);
@@ -102,7 +100,6 @@ export default function PrivacyPolicy() {
                     </nav>
                 </aside>
 
-                {/* Main Content */}
                 <main className="pp-content">
                     <div className="pp-alert">
                         <span className="pp-alert-icon">⚠️</span>
@@ -370,7 +367,7 @@ export default function PrivacyPolicy() {
                             <h4>Data Protection Officer — AgriSense AI</h4>
                             <div className="pp-contact-row">
                                 <span>📧</span>
-                                <span>privacy@agrisenseai.in</span>
+                                <span>nikunjbisani@gmail.com</span>
                             </div>
                             <div className="pp-contact-row">
                                 <span>📮</span>

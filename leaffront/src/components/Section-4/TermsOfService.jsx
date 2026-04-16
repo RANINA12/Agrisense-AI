@@ -434,7 +434,7 @@ export default function TermsOfService() {
                         </p>
                         <ul className="tos-list">
                             <li>Update the "Last Updated" date at the top of this document.</li>
-                            <li>Send an in-app notification to all registered users at least 15 days before changes take effect.</li>
+                            <li>Send an email to all registered users at least 15 days before changes take effect.</li>
                             <li>For fundamental changes to user rights or dispute resolution, require explicit re-acceptance.</li>
                             <li>Maintain an accessible archive of previous versions on our website.</li>
                         </ul>
@@ -459,13 +459,13 @@ export default function TermsOfService() {
                         <div className="tos-contact-grid">
                             <div className="tos-contact-card">
                                 <div className="tos-contact-card-title">⚖️ Grievance Officer</div>
-                                <div className="tos-contact-row"><span>📧</span><span>grievance@agrisenseai.in</span></div>
+                                <div className="tos-contact-row"><span>📧</span><span>nikunjbisani@gmail.com</span></div>
                                 <div className="tos-contact-row"><span>⏱️</span><span>Responds within 30 days</span></div>
                                 <div className="tos-contact-row"><span>🕐</span><span>Mon–Sat, 9 AM–6 PM IST</span></div>
                             </div>
                             <div className="tos-contact-card">
                                 <div className="tos-contact-card-title">📬 Legal Department</div>
-                                <div className="tos-contact-row"><span>📧</span><span>legal@agrisenseai.in</span></div>
+                                <div className="tos-contact-row"><span>📧</span><span>nikunjbisani@gmail.com</span></div>
                                 <div className="tos-contact-row"><span>📮</span><span>AgriSense AI Pvt. Ltd., India</span></div>
                                 <div className="tos-contact-row"><span>⚖️</span><span>Arbitration & litigation matters</span></div>
                             </div>

@@ -14,6 +14,7 @@ import FeedBack from "./components/Section-3/Feedback"
 import FeedBackHistory from "./components/Feature/FeedbackHistory"
 import DetailedHistory from "./components/Feature/DetailedHistory"
 import History from "./components/Feature/History";
+import VoteOfThanks from "./components/Section-4/VoteOfThanks";
 
 // const Dashboard = lazy(() => import("./pages/Dashboard"));
 
@@ -55,6 +56,7 @@ function App() {
           <Route path="/AgriSenseAI/about" element={<About />} />
           <Route path="/AgriSenseAI/services" element={<Services />} />
           <Route path="/AgriSenseAI/help" element={<Help />} />
+          <Route path="/AgriSenseAI/voteofthanks" element={<VoteOfThanks />} />
 
         </Routes>
       </Suspense>

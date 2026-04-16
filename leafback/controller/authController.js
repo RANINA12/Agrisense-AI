@@ -8,8 +8,8 @@ exports.logout = (req, res) => {
   res
     .clearCookie("token", {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
       path: "/",
     })
     .status(200)
@@ -20,7 +20,7 @@ exports.registerUser = async (req, res) => {
   try {
     const { name, email, phone, password, state, district, city, agreeToTerms } = req.body;
 
-    if (!validator.isEmail("test@gmail.com")) {
+    if (!validator.isEmail(email)) {
       return res.status(409).json({ success: false, message: "Email is not Valid." });
     }
 
@@ -41,8 +41,8 @@ exports.registerUser = async (req, res) => {
     );
     return res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     })
       .status(200)

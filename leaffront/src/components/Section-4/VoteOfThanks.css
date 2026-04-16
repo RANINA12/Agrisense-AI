@@ -1,0 +1,109 @@
+.vot-section {
+    padding: 4rem 1rem;
+    background-color: var(--bg-color, #fcfdfc);
+    /* Ensures primary text color matches theme */
+    color: var(--text-primary, #2d3436);
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.vot-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.vot-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.vot-title {
+    font-size: 2.25rem;
+    color: var(--accent-main, #1b5e20);
+    font-weight: 800;
+}
+
+.vot-subtitle {
+    color: var(--text-secondary, #666);
+    font-size: 1.1rem;
+}
+
+.vot-card.vot-message {
+    background: var(--surface-color, #ffffff);
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 5px solid var(--accent-main, #4caf50);
+    box-shadow: var(--card-shadow, 0 4px 20px rgba(0, 0, 0, 0.05));
+    margin-bottom: 4rem;
+    line-height: 1.7;
+}
+
+.vot-link {
+    color: var(--accent-hover, #20beff);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.vot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.vot-dataset-card {
+    background: var(--surface-color, #ffffff);
+    /* Uses secondary text color for a subtle border */
+    border: 1px solid var(--text-secondary, #e0e0e0);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.vot-dataset-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-hover, #4caf50);
+    /* Applies your glowing shadow effect in dark mode */
+    box-shadow: 0 10px 25px var(--effect-glow, rgba(0, 0, 0, 0.1));
+}
+
+.vot-crop-tag {
+    font-size: 0.85rem;
+    background: var(--bg-color, #f1f8e9);
+    color: var(--accent-hover, #33691e);
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+
+.vot-dataset-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.vot-kaggle-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-main, #1b5e20);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vot-footer-note {
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--text-secondary, #888);
+    font-style: italic;
+    font-size: 0.95rem;
+}

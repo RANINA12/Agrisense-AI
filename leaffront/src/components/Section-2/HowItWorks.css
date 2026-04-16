@@ -37,7 +37,6 @@
   padding: 50px 30px;
   border-radius: 30px;
   background-color: var(--surface-color);
-  /* Dynamically white or dark green */
   border: 2px solid var(--accent-main);
   position: relative;
   transition: all 0.4s ease;

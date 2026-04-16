@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import ResultDisplay from "./ResultDisplay";
 import "./ResultPage.css";
+import { Center } from "@react-three/drei";
 function ResultPage() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -21,9 +22,9 @@ function ResultPage() {
 
                 <div className="result-header">
                     <button className="btn-primary" onClick={() => navigate("/")}>
-                        Go Back to Lab
+                        🡠
                     </button>
-                    <h2>Detection Result</h2>
+                    <h2><Center>Detection Result</Center></h2>
                 </div>
                 <div className="result-images">
                     {images?.map((img, index) => (

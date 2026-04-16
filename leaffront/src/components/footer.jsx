@@ -1,14 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./footer.css";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  const navigate = useNavigate();
   return (
     <footer className="footer">
       <div className="container footer-container">
-
-        {/* Section 1: Brand & About */}
         <div className="footer-section brand-section">
           <div className="footer-logo">
             <span className="logo-icon">🍃</span>
@@ -35,11 +33,11 @@ const Footer = () => {
             <li><Link to="AgriSenseAI/terms-of-service">Terms of Service</Link></li>
           </ul>
         </div>
-
       </div>
       <div className="footer-bottom">
         <div className="container footer-bottom-container">
           <p>&copy; {currentYear} AgriSense AI Pvt. Ltd. All rights reserved.</p>
+          <a href="/AgriSenseAI/voteofthanks">vote of thanks</a>
 
           <div className="social-links">
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">

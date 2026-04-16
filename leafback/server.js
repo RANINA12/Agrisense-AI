@@ -4,9 +4,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 
-// Middleware
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     credentials: true
 }));
 app.use(express.json());
@@ -17,7 +16,6 @@ app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api", require("./routes/detectDiseaseRoute"));
 app.use("/api", require("./routes/otherRoutes"));
 
-// Connect MongoDB
 console.log("MONGO URI:", process.env.MONGO_URI);
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB Connected"))

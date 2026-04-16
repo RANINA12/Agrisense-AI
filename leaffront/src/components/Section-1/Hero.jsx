@@ -14,12 +14,6 @@ const HeroText = () => {
       navigate("/AgriSenseAI/login");
       return;
     }
-    const detectSection = document.getElementById("detect-section");
-    if (detectSection) {
-      detectSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      navigate("/AgriSenseAI/detect");
-    }
   };
   return (
     <div className="hero-text-wrapper">
