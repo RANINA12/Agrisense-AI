@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./privacyPolicy.css";
+import "./PrivacyPolicy.css";
 const TOC = [
     { id: "overview", num: "01", label: "Overview", icon: "🌿" },
     { id: "collection", num: "02", label: "Data We Collect", icon: "🗂️" },

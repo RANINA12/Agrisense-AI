@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
 import { useToast } from "../../utils/ToastContext"
 import axios from "axios";
-import "./feedback.css";
+import "./Feedback.css";
 const FeedbackForm = () => {
     const navigate = useNavigate();
     const { scan_id } = useParams() || location.state || {};

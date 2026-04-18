@@ -1,5 +1,5 @@
 import React from "react";
-import "./services.css";
+import "./Services.css";
 import Apple from "../../assets/images/Apple.jpg"
 import Cabbage from "../../assets/images/cabbage.png"
 import Corn from "../../assets/images/Corn.jpg"

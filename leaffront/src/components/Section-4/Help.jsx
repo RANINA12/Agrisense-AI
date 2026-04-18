@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./help.css";
+import "./Help.css";
 import { useToast } from "../../utils/ToastContext"
 import axios from "axios";
 const Help = () => {
