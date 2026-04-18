@@ -33,10 +33,9 @@ const Register = () => {
 
     if (selectedState === "") {
       setDistricts([]);
-      setError("Please select a state");
+      showToast(error, "error");
     } else {
       setDistricts(data[selectedState] || []);
-      setError("");
     }
   };
 
@@ -89,7 +88,7 @@ const Register = () => {
               </option>
             ))}
           </select>
-          {error && (<p>{error}</p>)}
+          
           <select value={formData.district} onChange={handleDistrictChange} disabled={!state} required>
             <option value="">Select District</option>
             {districts.map((dist, index) => (
@@ -108,13 +107,21 @@ const Register = () => {
             />
             <label htmlFor="agreeToTerms">
               I agree to the{" "}
-              <Link to="/AgriSenseAI/terms-of-service" target="_blank">
-                Terms of Service
-              </Link>{" "}
+              <a 
+  href="/AgriSenseAI/terms-of-service" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  Terms Of Service
+</a>{" "}
               and{" "}
-              <Link to="/AgriSenseAI/privacy-policy" target="_blank">
-                Privacy Policy
-              </Link>
+              <a 
+  href="/AgriSenseAI/privacy-policy" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  Privacy Policy
+</a>
             </label>
           </div>
 

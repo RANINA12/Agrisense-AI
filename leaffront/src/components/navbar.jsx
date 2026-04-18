@@ -3,6 +3,7 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../utils/auth";
 import { useToast } from "../utils/ToastContext";
+import logo from "../assets/images/logo.png"
 const Navbar = () => {
   const navigate = useNavigate();
   const { showToast } = useToast();
@@ -46,7 +47,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="container nav-container">
           <Link to="/" className="nav-logo">
-            <img src="src/assets/logo.png" alt="AgriSense AI Logo" />
+            <img src={logo} alt="AgriSense AI Logo" />
             <span className="logo-text">AgriSense AI</span>
           </Link>
           <div className="nav-links-wrapper desktop-nav">

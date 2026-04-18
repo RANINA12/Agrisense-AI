@@ -23,10 +23,10 @@ const Login = () => {
     const { success, message } = await login(formData.email, formData.password);
     if (success) {
       navigate("/");
-      showToast("Login Successfully ", "Error")
+      showToast("Login Successfully ", "success")
     }
     else {
-      showToast(message, "Error")
+      showToast(message, "error")
     }
   };
   return (
