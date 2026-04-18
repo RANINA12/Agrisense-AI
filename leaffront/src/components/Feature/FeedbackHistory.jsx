@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
 import axios from "axios";
 import FeedBackModal from "./FeedBackModal";
-import "./FeedBackHistory.css";
+import "./FeedbackHistory.css";
 const isEditable = (createdAt) => {
     const created = new Date(createdAt).getTime();
     const now = Date.now();

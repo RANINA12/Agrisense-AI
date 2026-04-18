@@ -1,6 +1,6 @@
 import { useAuth } from "../../utils/auth";
 import axios from "axios";
-import "./FeedbackModal.css";
+import "./FeedBackModal.css";
 import { useState } from "react";
 import { useToast } from "../../utils/ToastContext";
 function FeedBackModal({ feedback, scan_id, onSuccess, onClose }) {
