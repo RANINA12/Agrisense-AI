@@ -88,7 +88,7 @@ const Register = () => {
               </option>
             ))}
           </select>
-          
+
           <select value={formData.district} onChange={handleDistrictChange} disabled={!state} required>
             <option value="">Select District</option>
             {districts.map((dist, index) => (
@@ -107,21 +107,21 @@ const Register = () => {
             />
             <label htmlFor="agreeToTerms">
               I agree to the{" "}
-              <a 
-  href="/AgriSenseAI/terms-of-service" 
-  target="_blank" 
-  rel="noopener noreferrer"
->
-  Terms Of Service
-</a>{" "}
+              <a
+                href="/AgriSenseAI/terms-of-service"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms Of Service
+              </a>{" "}
               and{" "}
-              <a 
-  href="/AgriSenseAI/privacy-policy" 
-  target="_blank" 
-  rel="noopener noreferrer"
->
-  Privacy Policy
-</a>
+              <a
+                href="/AgriSenseAI/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Privacy Policy
+              </a>
             </label>
           </div>
 

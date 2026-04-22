@@ -6,7 +6,7 @@ import { useToast } from "../utils/ToastContext"
 import img11 from "../assets/images/img11.png"
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isLoading } = useAuth();
   const { showToast } = useToast();
   const [formData, setFormData] = useState({
     email: "",
@@ -57,8 +57,8 @@ const Login = () => {
               onChange={handleChange}
               required
             />
-            <button type="submit" className="login-btn btn-primary">
-              Login
+            <button type="submit" className="login-btn btn-primary" disabled={isLoading}>
+              {isLoading ? "Logging" : "Login"}
             </button>
           </form>
           <p className="signup-text">
